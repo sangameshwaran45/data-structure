@@ -1,26 +1,22 @@
-#include <stdio.h>
+def binary_search(arr, low, high, target):
+    while low <= high:
+        mid = low + (high - low) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
 
-int binarySearch(int arr[], int low, int high, int target) {
-    while (low <= high) {
-        int mid = low + (high - low) / 2;
-        if (arr[mid] == target)
-            return mid;
-        if (arr[mid] < target)
-            low = mid + 1;
-        else
-            high = mid - 1;
-    }
-    return -1;
-}
+def main():
+    arr = [2, 3, 4, 10, 40]
+    target = 10
+    result = binary_search(arr, 0, len(arr) - 1, target)
+    if result == -1:
+        print("Element not found")
+    else:
+        print(f"Element found at index {result}")
 
-int main() {
-    int arr[] = {2, 3, 4, 10, 40};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int target = 10;
-    int result = binarySearch(arr, 0, n - 1, target);
-    if (result == -1)
-        printf("Element not found\n");
-    else
-        printf("Element found at index %d\n", result);
-    return 0;
-}
+if __name__ == "__main__":
+    main()
